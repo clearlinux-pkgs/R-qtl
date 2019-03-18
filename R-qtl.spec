@@ -4,15 +4,20 @@
 #
 Name     : R-qtl
 Version  : 1.44.9
-Release  : 7
+Release  : 8
 URL      : https://cran.r-project.org/src/contrib/qtl_1.44-9.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/qtl_1.44-9.tar.gz
 Summary  : Tools for Analyzing QTL Experiments
 Group    : Development/Tools
 License  : GPL-3.0
 Requires: R-qtl-lib = %{version}-%{release}
-Requires: R-rlang
+Requires: R-assertthat
+Requires: R-cli
+Requires: R-withr
+BuildRequires : R-assertthat
+BuildRequires : R-cli
 BuildRequires : R-rlang
+BuildRequires : R-withr
 BuildRequires : buildreq-R
 BuildRequires : buildreq-cmake
 
@@ -36,10 +41,10 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1548214269
+export SOURCE_DATE_EPOCH=1552872848
 
 %install
-export SOURCE_DATE_EPOCH=1548214269
+export SOURCE_DATE_EPOCH=1552872848
 rm -rf %{buildroot}
 export LANG=C
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
@@ -75,8 +80,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export _R_CHECK_FORCE_SUGGESTS_=false
-R CMD check --no-manual --no-examples --no-codoc -l %{buildroot}/usr/lib64/R/library qtl|| : 
-cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
+R CMD check --no-manual --no-examples --no-codoc  qtl || :
 
 
 %files
@@ -229,7 +233,6 @@ cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
 /usr/lib64/R/library/qtl/help/qtl.rdx
 /usr/lib64/R/library/qtl/html/00Index.html
 /usr/lib64/R/library/qtl/html/R.css
-/usr/lib64/R/library/qtl/libs/symbols.rds
 /usr/lib64/R/library/qtl/sampledata/README.txt
 /usr/lib64/R/library/qtl/sampledata/gen.txt
 /usr/lib64/R/library/qtl/sampledata/listeria.csv
@@ -246,6 +249,28 @@ cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
 /usr/lib64/R/library/qtl/sampledata/listeria_rot.csv
 /usr/lib64/R/library/qtl/sampledata/map.txt
 /usr/lib64/R/library/qtl/sampledata/phe.txt
+/usr/lib64/R/library/qtl/tests/gen.txt
+/usr/lib64/R/library/qtl/tests/listeria.csv
+/usr/lib64/R/library/qtl/tests/listeria.map
+/usr/lib64/R/library/qtl/tests/listeria.raw
+/usr/lib64/R/library/qtl/tests/listeria2.csv
+/usr/lib64/R/library/qtl/tests/listeria2.map
+/usr/lib64/R/library/qtl/tests/map.txt
+/usr/lib64/R/library/qtl/tests/phe.txt
+/usr/lib64/R/library/qtl/tests/test_io.R
+/usr/lib64/R/library/qtl/tests/test_io.Rout.save
+/usr/lib64/R/library/qtl/tests/test_mapqtl_io.R
+/usr/lib64/R/library/qtl/tests/test_mapqtl_io.Rout.save
+/usr/lib64/R/library/qtl/tests/test_qtl.R
+/usr/lib64/R/library/qtl/tests/test_scanonevar.R
+/usr/lib64/R/library/qtl/tests/test_scanonevar.Rout.save
+/usr/lib64/R/library/qtl/tests/test_tidyIO.R
+/usr/lib64/R/library/qtl/tests/test_tidyIO.Rout.save
+/usr/lib64/R/library/qtl/tests/testaugmentation.R
+/usr/lib64/R/library/qtl/tests/testthat.R
+/usr/lib64/R/library/qtl/tests/testthat/test-fliporder.R
+/usr/lib64/R/library/qtl/tests/testthat/test-scantwoperm.R
+/usr/lib64/R/library/qtl/tests/testthat/test-stepwiseqtl.R
 
 %files lib
 %defattr(-,root,root,-)
