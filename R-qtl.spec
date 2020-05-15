@@ -4,7 +4,7 @@
 #
 Name     : R-qtl
 Version  : 1.46.2
-Release  : 18
+Release  : 19
 URL      : https://cran.r-project.org/src/contrib/qtl_1.46-2.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/qtl_1.46-2.tar.gz
 Summary  : Tools for Analyzing QTL Experiments
@@ -15,8 +15,8 @@ BuildRequires : buildreq-R
 BuildRequires : buildreq-cmake
 
 %description
-This directory contains standalone binaries of R/qtl (currently MQM
-implentations).
+(called quantitative trait loci, QTLs) contributing to variation in
+  quantitative traits.
 
 %package lib
 Summary: lib components for the R-qtl package.
@@ -28,21 +28,22 @@ lib components for the R-qtl package.
 
 %prep
 %setup -q -c -n qtl
+cd %{_builddir}/qtl
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1584025210
+export SOURCE_DATE_EPOCH=1589538737
 
 %install
-export SOURCE_DATE_EPOCH=1584025210
+export SOURCE_DATE_EPOCH=1589538737
 rm -rf %{buildroot}
 export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
-export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
-export FFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
+export FCFLAGS="$FFLAGS -O3 -flto -fno-semantic-interposition "
+export FFLAGS="$FFLAGS -O3 -flto -fno-semantic-interposition "
 export CXXFLAGS="$CXXFLAGS -O3 -flto -fno-semantic-interposition "
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
