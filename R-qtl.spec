@@ -4,7 +4,7 @@
 #
 Name     : R-qtl
 Version  : 1.48.1
-Release  : 23
+Release  : 24
 URL      : https://cran.r-project.org/src/contrib/qtl_1.48-1.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/qtl_1.48-1.tar.gz
 Summary  : Tools for Analyzing QTL Experiments
